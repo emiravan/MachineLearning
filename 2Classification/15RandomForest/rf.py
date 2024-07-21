@@ -76,5 +76,26 @@ gnb.fit(X_train,y_train)
 y_pred=gnb.predict(X_test)
 
 cm=confusion_matrix(y_test,y_pred)
-print('----------------------------GNB LINEAR----------------------------')
+print('----------------------------GNB--------------------------')
+print(cm)
+
+
+from sklearn.tree import DecisionTreeClassifier
+dtc = DecisionTreeClassifier(criterion='entropy')
+
+dtc.fit(X_train,y_train) #X_train'den y_traini öğren demek
+y_pred=dtc.predict(X_test) #X_test'ten verileri alıp tahmin yap
+
+cm=confusion_matrix(y_test,y_pred)
+print('----------------------------DTC ENTROPY----------------------------')
+print(cm)
+
+
+from sklearn.ensemble import RandomForestClassifier
+rfc = RandomForestClassifier(n_estimators=10, criterion='entropy')
+rfc.fit(X_train, y_train)
+
+y_pred = rfc.predict(X_test)
+cm = confusion_matrix(y_test, y_pred)
+print('----------------------------RF ENTROPY----------------------------')
 print(cm)
